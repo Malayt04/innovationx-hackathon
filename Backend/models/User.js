@@ -33,8 +33,17 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
     },
+    investedvalue: {
+        type: Number,
+    },
+    currentvalue: {
+        type: Number,
+    },
+    totalreturns: {
+        type: Number,
+    },
     myholdings:[{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: "Creator"
     }]
 });
