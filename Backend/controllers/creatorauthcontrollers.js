@@ -80,7 +80,7 @@ module.exports.creatorsignuppost = async (req, res) => {
         const percentageChange = await fetchChannelDataForLastNDays(creatorchannelid);
         console.log("percentageChange:", percentageChange);
 
-        console.log(subscriberCount);
+        
 
         const { tokens, pricepertoken } = calculateTokenAllocation(subscriberCount);
         
@@ -97,7 +97,7 @@ module.exports.creatorsignuppost = async (req, res) => {
         console.log("percentagedeflection:", percentagedeflection)
 
         
-        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection });
+        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection, subscribers:subscriberCount });
         
         
         const token = createToken(creator._id);

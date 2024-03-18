@@ -44,6 +44,9 @@ const creatorSchema = new mongoose.Schema({
     },
     percentagedeflection:{
         type:Number,
+    },
+    subscribers:{
+        type: Number
     }
 });
 
