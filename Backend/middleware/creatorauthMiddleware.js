@@ -10,12 +10,11 @@ const creatorrequireAuth = (req, res, next) => {
                 console.log(err.message);
                 res.redirect('/creatorlogin');
             } else {
-                console.log(decodedToken);
                 next();
             }
         });
     } else {
-        res.redirect('/creatorlogin');
+        res.redirect('/creatorsignup');
     }
 };
 

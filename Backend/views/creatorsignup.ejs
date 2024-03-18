@@ -4,6 +4,10 @@
     <title>Sign Up as Creator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="creatorsignup.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script>
         /*function deploy(){
             document.addEventListener('DOMContentLoaded', async function () {
@@ -107,21 +111,43 @@ function checkcreatorform() {
         deploy();
     </script>
 </head>
-<body>
-    <div class="nav"><span id="mainthala">Thala</span>
-        <span id="homepage"><a href="/" >Home</a></span>
-      </div>
-      <p id="signuhead">Signup as a Creator</p>
-      <form id="userform" method="post" action="/creatorsignup" >
-        <input class="inputplace" id="creatorname" type="text" name="creatorname" placeholder="     Name"/><br>
-        <input class="inputplace" id="creatoremail" type="email" name="creatoremail" placeholder="     Email"/><br>
-            <input class="inputplace" id="creatorchannelid" type="text" name="creatorchannelid " placeholder="     Channel ID"/>
-            <br>
-            <input class="inputplace" id="creatorchannelname" type="text" name="creatorchannelname"placeholder="     Channel Name"/><br>
-        <input class="inputplace" id="creatormetamaskid" type="text" name="creatormetamaskid" placeholder="       Metamask ID" ><br>
-        <input class="inputplace" id="creatorpassword" type="password" name="creatorpassword" required placeholder="        Password" ><br>
+<body id="body">
+    <div id="bord">
+        <nav class="navbar">
+            <div class="navdiv">
+
+                <ul>
+                    <li><a href="/usersignup"><span class="join">User</span></a></li>
+                    <li><span id="mint">metamint</span></li>
+                    <li><a href="/"><span class="join">Home</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+      <p id="signuhead">Signup</p>
+      <form id="userform" method="post" action="/creatorsignup">
+        <label for="creatorname">Name</label>
+        <input class="inputplace" id="creatorname" type="text" name="creatorname" >
+        <br>
+        <label for="creatoremail">Email</label>
+        <input class="inputplace" id="creatoremail" type="email" name="creatoremail" >
+        <br>
+        <label for="creatorchannelid">Channel ID</label>
+        <input class="inputplace" id="creatorchannelid" type="text" name="creatorchannelid" >
+        <br>
+        <label for="creatorchannelname">Channel Name</label>
+        <input class="inputplace" id="creatorchannelname" type="text" name="creatorchannelname">
+        <br>
+        <label for="creatormetamaskid">Wallet ID</label>
+        <input class="inputplace" id="creatormetamaskid" type="text" name="creatormetamaskid" >
+        <br>
+        <label for="creatorpassword">Password</label>
+        <input class="inputplace" id="creatorpassword" type="password" name="creatorpassword" required >
+        <br>
         <input id="usersubmit" type="submit" value="Sign Up" style="display: none;">
     </form>
-    <button id="createWalletBtn" onclick="display()">Create Wallet</button>
+    <button id="createWalletBtn" onclick="display()">Connect Wallet</button>
 </body>
 </html>
+
+

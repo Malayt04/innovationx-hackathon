@@ -36,20 +36,11 @@ const createToken = (id) => {
 };
 
 async function fetchChannelDataForLastNDays(channelId) {
-    const today = new Date();
-    const yesterday = new Date(today);
-    const dayBeforeYesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
-    dayBeforeYesterday.setDate(today.getDate() - 2);
-
-    const todayFormatted = formatDate(today);
-    const yesterdayFormatted = formatDate(yesterday);
-    const dayBeforeYesterdayFormatted = formatDate(dayBeforeYesterday); 
 
     try {
+        const today = new Date();
+        const todayFormatted = formatDate(today);
         const todayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y&date=${todayFormatted}`);
-        const yesterdayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y&date=${yesterdayFormatted}`);
-        const dayBeforeYesterdayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y&date=${dayBeforeYesterdayFormatted}`);
         
         const todayViews = todayResponse.data.items[0].statistics.viewCount; ///fetched from api
         const yesterdayViews =29255964500;
@@ -81,6 +72,7 @@ const axios = require('axios');
 
 module.exports.creatorsignuppost = async (req, res) => {
     const { creatorname, creatoremail, creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword } = req.body;
+    console.log(creatorname, creatoremail, creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword)
     
     try {
         // Fetch views and subscribers count from the YouTube API
@@ -112,7 +104,7 @@ module.exports.creatorsignuppost = async (req, res) => {
         
         // Set cookie and respond with creator ID
         res.cookie('jwt', token, { httpOnly:true, maxAge: maxAge * 1000 });
-        res.status(201).json({ creator: creator._id });
+        res.status(201).json(creator);
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
@@ -167,14 +159,15 @@ async function  fetchChannelData(channelId) {
         const response = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y`);
         
         if (!response.data.items || !response.data.items.length) {
-            throw new Error('Failed to fetch YouTube channel data');
+            throw new Error('Do not get response');
         }
         
         const subscriberCount = response.data.items[0].statistics.subscriberCount;
         
         return subscriberCount;
     } catch (err) {
-        throw new Error('Failed to fetch YouTube channel data');
+        console.log(err)
+        throw new Error('subscriber not found');
     }
 }
 
