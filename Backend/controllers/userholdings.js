@@ -1,7 +1,7 @@
 const Creator = require('../models/Creator');
 const User=require('../models/User');
 
-
+let investedvalue, currentvalue, totalreturns;
 const dashboard = async (req, res) => {
     try {
         const sortedCreatorList = await Creator.find().sort({subscribers: -1}).limit(5);
@@ -41,19 +41,20 @@ const buyStock = async(req,res)=>{
     if (user) {
       user.myholdings.push(creator);
       await user.save();
-  
+
       res.status(200).json(user);
      
     }
     else{
       return res.status(400).json({ error: 'Organisation not found' });
     }
-
-  
-  
   } catch (error) {
     res.status(400).json({error:error.message});
   }
+}
+
+const handleTransactions = ()=>{
+  investedvalue += creator.adjustedPricePerToken * creator._doc
 }
 
 module.exports ={userDashboard,buyStock,dashboard};
