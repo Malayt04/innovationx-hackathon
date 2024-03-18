@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 
 const userauthRoutes = require('./routes/userauthRoutes')
 const creatorauthRoutes = require('./routes/creatorauthRoutes')
+const userRoutes = require('./routes/userRoutes')
 const { getUsername } = require('./middleware/userauthMiddleware')
 const { getCreatorChannelName } = require('./middleware/creatorauthMiddleware') // Import getCreatorChannelName middleware
 const cookieParser = require('cookie-parser')
@@ -28,6 +29,7 @@ mongoose.connect('mongodb+srv://innovationx:innovationx@cluster0.mdiegzg.mongodb
 .catch((err) => console.log(err))
 
 app.use(getUsername); 
+app.use(userRoutes);
 app.use(userauthRoutes);
 app.use(getCreatorChannelName); 
 app.use(creatorauthRoutes); 
