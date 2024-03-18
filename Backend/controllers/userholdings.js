@@ -1,3 +1,3 @@
-module.exports.getMyHoldings = (req,res)=>{
+module.exports.userDashboard = (req,res)=>{
     
 }

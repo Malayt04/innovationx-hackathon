@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
         minlength: 8,
     },
     myholdings:[{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Creator"
     }]
 });
