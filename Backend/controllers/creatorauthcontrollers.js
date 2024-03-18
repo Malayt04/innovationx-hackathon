@@ -206,11 +206,12 @@ module.exports.creatorlogoutget = (req, res) => {
 
 
 module.exports.updateTokens = async (req, res) => {
-    const { creatorchannelname, quantity } = req.body;
+    const { creatorchannelname } = req.params.creatorchannelname;
+    const {quantity} = req.body;
 
     try {
         
-        const creator = await Creator.findOne({ creatorchannelname: creatorchannelname });
+        const creator = await Creator.findOne(creatorchannelname);
 
         if (!creator) {
             throw Error('Creator not found');
@@ -223,7 +224,7 @@ module.exports.updateTokens = async (req, res) => {
         await creator.save();
 
         
-        res.status(200).json({ message: 'Tokens updated successfully' });
+        res.status(200).json(creator);
     } catch (err) {
         
         res.status(400).json({ error: err.message });

@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
     },
+    myholdings:[{
+        type: Schema.Types.ObjectId,
+        ref: "Creator"
+    }]
 });
 
 userSchema.pre('save', async function (next) {

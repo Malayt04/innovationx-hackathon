@@ -12,6 +12,6 @@ router.post('/creatorsignup', creatorsignuppost);
 router.get('/creatorlogin', creatorloginget);
 router.post('/creatorlogin', creatorloginpost);
 router.get('/creatorlogout', creatorlogoutget);
-router.post('/updateTokens', updateTokens); 
+router.post('/updateTokens/:creatorchannelname', updateTokens); 
 
 module.exports = router;
