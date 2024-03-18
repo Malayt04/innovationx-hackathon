@@ -1,7 +1,7 @@
 const Creator = require('../models/Creator');
 const User=require('../models/User');
 
-let investedvalue, currentvalue, totalreturns;
+
 const dashboard = async (req, res) => {
     try {
         const sortedCreatorList = await Creator.find().sort({subscribers: -1}).limit(5);
@@ -53,8 +53,5 @@ const buyStock = async(req,res)=>{
   }
 }
 
-const handleTransactions = ()=>{
-  investedvalue += creator.adjustedPricePerToken * creator._doc
-}
 
 module.exports ={userDashboard,buyStock,dashboard};
