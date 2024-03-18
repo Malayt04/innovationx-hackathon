@@ -1,5 +1,9 @@
 <html>
     <head>
+        <link rel="stylesheet" href="creatorlogin.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <title>Sign In as User</title>
         <script>
             function checkuserform(){
@@ -12,26 +16,31 @@
             }
         </script>
     </head>
-    <body>
-        <div class="nav"><span id="">metamint</span>
-            <span id="homepage"><a href="/" >Home</a></span>
-          </div>
-          <div ><p id="signuhead">Welcome Back</p>
+    <body id="body">
+        <div id="bord">
+            <nav class="navbar">
+                <div class="navdiv">
+    
+                    <ul>
+                        <li><a href="/usersignup"><span class="join">Signup</span></a></li>
+                        <li><span id="mint">metamint</span></li>
+                        <li><a href="/"><span class="join">Home</span></a></li>
+                    </ul>
+                </div>
+            </nav>
         </div>
+        <p id="signuhead">Login</p>
           <form id="userform" method="post" action="/userlogin" onsubmit="return checkuserform()">
-            <img id="emlimg"src="Vector.svg" alt="">
-            <img id="psdimg"src="Group.svg" alt="">
-            <div>
-                
-            </div>
-            <input class="inputplace" id="useremail" type="email" name="useremail" placeholder="        Email"  /><br>
-            <input class="inputplace" id="userpassword" type="password" name="userpassword" placeholder="        Password" /><br>
-           
+            <label for="useremail">Email</label>
+            <input class="inputplace" id="useremail" type="email" name="useremail">
+            <br>
+            <label for="userpassword">Password</label>
+            <input class="inputplace" id="userpassword" type="password" name="userpassword">
+            <br>
             <input id="usersubmit" type="submit" value="Submit"/>
 
             </form>
-            
-        </table>
+
         
     </body>
 </html>

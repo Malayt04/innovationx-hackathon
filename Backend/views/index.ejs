@@ -3,90 +3,52 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>metamint</title>
-    <link href="" rel="stylesheet">
-    
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
   </head>
   <body>
-    <div class="nav"><span id="">metamint</span>
-      <div class="navdiv">
-        <ul id="list1">
-          <li><a href="/">Home</a></li>
-          <li><a href="#aboutcont">About us</a></li>
-          <button><a href="./creatorlogin">Creator Login</a></button>
-          <button><a href="./creatorsignup">Creator SignUP</a></button>
-        </ul>
-      </div>
+    <div class="nav">
+        <button id="creator_signup"><a href="./creatorsignup">join</a></button>
+        <button id="user_signup"><a href="./usersignup">create account</a></button>
     </div>
-      <div class="mainbody">
-        <div class="container" id="abc">
-          <font size="" color="white"><span class="autotype"></span></font>
-        </div>
-        <div>
-          <div id="contmain">
-          <font id="discmain">Getting Started</font>
-          <br>
-          <p id="paramain">Get started by selecting your favorite YouTube channels and <br>turning them into tradable stocks on our platform. Seamlessly<br> merge entertainment and investment, unlocking a new era <br>where content creators and investors unite.</p>
-          <div id="mdiv">
-            <p id="mcont">Create a New Metamask Wallet Now!</p>
-            <button id="mbut"><a href="https://metamask.io/download/" target="_blank">Create Metamask</a></button>
-          </div>
+    <font size="" color="white"><span class="metamint"></span></font>
 
-          <div class="ubutton">
-            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="./usersignup"><button >User Sign UP</button></a>
-            <a href="./userlogin"><button >User Login</button></a>
-          </div>
+    <p id="about_us">About us</p>
+    <div id="aboutus">
+        <div id="aboutus_text">
+            <p>At metamint, we aim to revolutionize the digital media landscape by empowering creators to directly engage with their audience and monetize
+                their content. We leverage the power of Web3 technology and tokenomics to enable users to invest in their favorite creators and even bid
+                for ownership of their channels. Our platform offers enhanced control for creators, increased engagement for users, and an ownership
+                economy that creates a more equitable and vibrant digital ecosystem. By harnessing the potential of blockchain and decentralized finance,
+                we create a future where creativity thrives, and value is shared among all participants. Join us in building a platform that empowers
+                creators and enables users to participate in the ownership economy of digital media.</p>
         </div>
-      </div>
-      <div id="">
-        <p>ABOUT US</p>
-      </div>
-      <div id="">
-        <p>
-          At <b>metamint</b>, we aim to revolutionize the digital media landscape by empowering creators to directly engage with their audience and monetize 
-          their content. We leverage the power of Web3 technology and tokenomics to enable users to invest in their favorite creators and even bid
-          for ownership of their channels. Our platform offers enhanced control for creators, increased engagement for users, and an ownership
-          economy that creates a more equitable and vibrant digital ecosystem. By harnessing the potential of blockchain and decentralized finance,
-          we create a future where creativity thrives, and value is shared among all participants. Join us in building a platform that empowers 
-          creators and enables users to participate in the ownership economy of digital media.
-        </p>
-      </div>
-    
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-   <script>
-      var typed=new Typed(".autotype",{strings:["Welcome To","metamint"],
+    </div>
+    <p id="contact_us">Contact us</p>
+    <div id="contactus">
+        <div id="contactus_form">
+            <form action="mailto:saxenaanubhav1204@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name</label>
+                <input class="inputplace" type="text" id="name" name="name" required><br>
+                <label for="email">Email</label>
+                <input class="inputplace" type="email" id="email" name="email" required><br>
+                <label for="query">Message</label>
+                <textarea class="inputplace" id="query" name="query" rows="4" cols="50" required></textarea><br>
+                <input id="usersubmit" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p id="footer_text">&copy; 2024 metamint. All rights reserved.</p>
+    </footer>
+    <script>
+      var typed=new Typed(".metamint",{strings:["Welcome To","THALA"],
     typeSpeed:150,
     backSpeed:120,
     loop:true});
-
     </script>
-    <style>
-      .autotype {
-        color: black;
-      }
-    </style>
-  <div>
-    <h1>Contact Us</h1>
-  </div>
-  <div>
-    <form action="mailto:saxenaanubhav1204@gmail.com" method="post" enctype="text/plain">
-      <label for="name">Name:</label><br>
-      <input type="text" id="name" name="name" required><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" required><br>
-      <label for="query">What can we help you with:</label><br>
-      <textarea id="query" name="query" rows="4" cols="50" required></textarea><br>
-      <input type="submit" value="Submit">
-  </form>
-  </div>
-  <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <p>&copy; 2024 metamint. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-  </body>
+  </body>
 </html>
