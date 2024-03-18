@@ -51,7 +51,7 @@ body {
 }
 
 .navbar ul li {
-    margin-right: 280px; /* Adjust as needed */
+    margin-right: 280px; 
 }
 
 .navbar ul li a {
@@ -137,15 +137,15 @@ body {
 }
 
 .inputplace {
-    display: inline-block; /* Display input fields inline */
-    margin-right: 10px; /* Add some margin between input fields */
+    display: inline-block; 
+    margin-right: 10px; 
 }
 
 label {
-    display: inline-block; /* Display labels inline */
-    width: 120px; /* Set a fixed width for labels to align them */
-    text-align: right; /* Align text to the right */
-    margin-right: 10px; /* Add some margin between labels and input fields */
+    display: inline-block; 
+    width: 120px;
+    text-align: right; 
+    margin-right: 10px; 
 }
 .inputplace {
     background-color: #E3D8A0; 

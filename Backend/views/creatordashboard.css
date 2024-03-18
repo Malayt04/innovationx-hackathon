@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image:url(User_login.png) ;
+    background-image:url(background.png) ;
     background-repeat:no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%;
@@ -19,29 +19,122 @@ body {
     font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
+  position: relative;
+  left: 40px;
 }
-
+#sea{
+    width: 400px;
+    height: 50px;
+    position: relative;
+    top: 155px;
+    left: 530px;
+}
+#list{
+    width: 600px;
+}
+#list1{
+    list-style-type: none;
+    display: flex;
+    position: relative;
+    top: 110px;
+    left: 440px;
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 23px;
+  justify-content: space-between;
+}
+#list2{
+    list-style-type: none;
+    display: flex;
+    font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 23px;
+  justify-content: space-between;
+  position: relative;
+  top:125px;
+  left:440px;
+}
+#creator{
+    width: 280px;
+    height: 280px;
+    position: relative;
+    top: 180px;
+    left: 600px;
+}
 .navbar {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+#topcreators{
+    font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 21px;
+  position: relative;
+  top: 160px;
+  left: 100px;
+}
 .navdiv {
     display: flex;
     align-items: center;
-    justify-content: space-around;
     background-color: #E3D8A0;
     border-radius: 20px;
     border-color: #2b051e;
-    width: 50%;
+    width: 70%; 
     position: absolute;
     top: 20px;
-    left: 280px;
+    left: 190px;
     border-width: 2px;
     border-style: solid;
     height: 55px;
-    padding-left:230px ;
+    padding-left:90px ;
+}
+#search {
+    position: relative;
+    top: 130.9px;
+    left: 127.8px;
+    width: 390.9px;
+    height: 36px;
+    background-color: #E3D8A0;
+    border: 1px solid;
+    border-color: #2b051e;
+    border-radius: 8px;
+    color: black; 
+
 }
 
+#imgnew{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 350px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+}
+#imgtop{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 200px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+}
+#search::placeholder {
+    color: gray; 
+    font-style: italic; 
+}
+#newcreators{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 21px;
+    position: relative;
+    top: 300px;
+    left: 100px;
+}
 .navbar ul {
     list-style-type: none;
     margin: 0;
@@ -51,7 +144,7 @@ body {
 }
 
 .navbar ul li {
-    margin-right: 280px; /* Adjust as needed */
+    margin-right: 230px; 
 }
 
 .navbar ul li a {
@@ -124,11 +217,28 @@ body {
 }
 
 #usersubmit:hover {
-    background-color: #e59a29;
+    background-color: #ca8c29;
 }
 
+#createWalletBtn {
+    padding: 8px 20px;
+    background-color: #dd8c0a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 700px;
+    width: 200px;
+    color: #2b051e;
+    font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
+#createWalletBtn:hover {
+    background-color: #cd8e21;
+}
 #userform {
-    margin-top: 130px;
+    margin-top: 120px;
     margin-left: 550px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
@@ -137,15 +247,15 @@ body {
 }
 
 .inputplace {
-    display: inline-block; /* Display input fields inline */
-    margin-right: 10px; /* Add some margin between input fields */
+    display: inline-block; 
+    margin-right: 10px; 
 }
 
 label {
-    display: inline-block; /* Display labels inline */
-    width: 120px; /* Set a fixed width for labels to align them */
-    text-align: right; /* Align text to the right */
-    margin-right: 10px; /* Add some margin between labels and input fields */
+    display: inline-block; 
+    width: 120px; 
+    text-align: right;
+    margin-right: 10px; 
 }
 .inputplace {
     background-color: #E3D8A0; 
