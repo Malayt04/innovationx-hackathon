@@ -7,15 +7,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
   </head>
-  <body>
-    <div class="nav">
-        <button id="creator_signup"><a href="./creatorsignup">join</a></button>
-        <button id="user_signup"><a href="./usersignup">create account</a></button>
-    </div>
-    <font size="" color="white"><span class="metamint"></span></font>
+  <body id="body">
+    <!-- <div id="bord">
+        <nav class="navbar">
+            <div class="navdiv">
 
+                <ul>
+                    <li><a href="/"><span class="join">Home</span></a></li>
+                    <li><a href="#about_us"><span class="join">About </span></a></li>
+                    <li><a href="#contactus"><span class="join">Contact </span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div> -->
+    <div id="started">
+      <button id="getting"><a href="/usersignup">Getting Started</button>
+      <p id="cre">Are you a Creator? <a href="/creatorsignup">Join</a></p>
+    </div>
+    <div class="nav">
+        <button id="user_signup"><a href="/userlogin">Login</a></button>
+    </div>
+    <p id="title">metamint</p>
     <p id="about_us">About us</p>
     <div id="aboutus">
         <div id="aboutus_text">
@@ -32,11 +45,11 @@
         <div id="contactus_form">
             <form action="mailto:saxenaanubhav1204@gmail.com" method="post" enctype="text/plain">
                 <label for="name">Name</label>
-                <input class="inputplace" type="text" id="name" name="name" required><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="inputplace" type="text" id="name" name="name" required><br>
                 <label for="email">Email</label>
-                <input class="inputplace" type="email" id="email" name="email" required><br>
-                <label for="query">Message</label>
-                <textarea class="inputplace" id="query" name="query" rows="4" cols="50" required></textarea><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="inputplace" type="email" id="email" name="email" required><br>
+                <label for="query" id="message">Message</label>
+                <textarea class="inputplace" id="query" name="query" rows="4" cols="50" required></textarea>
                 <input id="usersubmit" type="submit" value="Submit">
             </form>
         </div>
@@ -44,11 +57,5 @@
     <footer>
         <p id="footer_text">&copy; 2024 metamint. All rights reserved.</p>
     </footer>
-    <script>
-      var typed=new Typed(".metamint",{strings:["Welcome To","THALA"],
-    typeSpeed:150,
-    backSpeed:120,
-    loop:true});
-    </script>
   </body>
 </html>
