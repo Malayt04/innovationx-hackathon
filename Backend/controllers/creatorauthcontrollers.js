@@ -36,26 +36,39 @@ const createToken = (id) => {
 };
 
 async function fetchChannelDataForLastNDays(channelId) {
-
     try {
         const today = new Date();
         const todayFormatted = formatDate(today);
         const todayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y&date=${todayFormatted}`);
-        
-        const todayViews = todayResponse.data.items[0].statistics.viewCount; ///fetched from api
+        console.log('todayResponse:', todayResponse); // Debug line
+
+        const todayViews = todayResponse.data.items[0].statistics.viewCount;
+        console.log('todayViews:', todayViews); // Debug line
+
         const yesterdayViews =29255964500;
-        const dayBeforeYesterday =29255964000;
+        const dayBeforeYesterdayViews =29255964000;
 
-        const c1 = yesterdayViews-dayBeforeYesterday;
-        const c2 = todayViews-yesterdayViews;
+        const mean = (todayViews+yesterdayViews+dayBeforeYesterdayViews)/3;
+        console.log('mean:', mean); // Debug line
 
-        const percentageChange=((c2-c1)/c1)* 100;
-        console.log("todaya",todayViews);
-        console.log("yesterday",yesterdayViews);
-      
-        return percentageChange;
-    
+        const squaredDifferenceSum = Math.pow(dayBeforeYesterdayViews-mean,2)+Math.pow(yesterdayViews-mean,2)+Math.pow(todayViews-mean,2);
+        console.log('squaredDifferenceSum:', squaredDifferenceSum); // Debug line
+
+        const standardDeviation= Math.sqrt(squaredDifferenceSum/3);
+        console.log('standardDeviation:', standardDeviation); // Debug line
+
+        const tokenPrices = [];
+
+        for (let price = mean - 3 * standardDeviation; price <= mean + 3 * standardDeviation; price++) {
+            const probability = calculateProbability(price, mean, standardDeviation);
+            tokenPrices.push({ price, probability });
+        }
+
+        console.log('tokenPrices:', tokenPrices); // Debug line
+
+        return tokenPrices;
     } catch (err) {
+        console.error('Error:', err); // Debug line
         throw new Error('Failed to fetch YouTube channel data');
     }
 }
@@ -77,8 +90,8 @@ module.exports.creatorsignuppost = async (req, res) => {
     try {
         // Fetch views and subscribers count from the YouTube API
         const subscriberCount  = await fetchChannelData(creatorchannelid);
-        const percentageChange = await fetchChannelDataForLastNDays(creatorchannelid);
-        console.log("percentageChange:", percentageChange);
+        const tokenPrices = await fetchChannelDataForLastNDays(creatorchannelid);
+        console.log("mean:", mean);
 
         
 
@@ -86,18 +99,26 @@ module.exports.creatorsignuppost = async (req, res) => {
         
         
         let adjustedPricePerToken=pricepertoken;
+
         
-        if (percentageChange > 0) {
-            adjustedPricePerToken *= (1 + percentageChange / 100);
-        } else if (percentageChange < 0) {
-            adjustedPricePerToken *= (1 - Math.abs(percentageChange) / 100);
+
+    // Calculate total probability (area under the curve)
+    const totalProbability = tokenPrices.reduce((acc, { probability }) => acc + probability, 0);
+
+    // Choose a random value based on probability distribution
+    let randomNumber = Math.random() * totalProbability;
+    for (const { price, probability } of tokenPrices) {
+        if (randomNumber < probability) {
+            adjustedPricePerToken = price;
+            break;
         }
-
-        const percentagedeflection =(( adjustedPricePerToken - pricepertoken)/pricepertoken) * 100;
-        console.log("percentagedeflection:", percentagedeflection)
-
+        randomNumber -= probability;
+    }
         
-        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection, subscribers:subscriberCount });
+        
+        
+        
+        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection:totalProbability, subscribers:subscriberCount });
         
         
         const token = createToken(creator._id);
