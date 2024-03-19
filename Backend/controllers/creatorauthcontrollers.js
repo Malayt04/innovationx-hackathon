@@ -102,13 +102,14 @@ module.exports.creatorsignuppost = async (req, res) => {
 
         const newCreator = {
             creatorname: creator.creatorname,
-            adujustedPricePerToken:creator.adjustedPricePerToken,
+            adjustedPricePerToken:creator.adjustedPricePerToken,
             tokens:creator.tokens,
-            percentagedeflection:creator.percentagedeflection
+            percentagedeflection:creator.percentagedeflection,
+            createrchannelname:creator.creatorchannelname
         };
         
         
-        res.status(201).render('creatordashboard', { creatorname: newCreator.creatorname, adjustedPricePerToken:newCreator.adjustedPricePerToken,  tokens:newCreator.tokens, percentagedeflection:newCreator.percentagedeflection});
+        res.status(201).render('creatordashboard', { creatorname: newCreator.creatorname, adjustedPricePerToken:newCreator.adjustedPricePerToken,  tokens:newCreator.tokens, percentagedeflection:newCreator.percentagedeflection, creatorchannelname:newCreator.creatorchannelname });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });

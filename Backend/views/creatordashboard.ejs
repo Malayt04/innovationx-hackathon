@@ -56,8 +56,8 @@
         </ul>
         <ul id="list2">
             <li>10000</li>
-            <li><%=adjustedPricePerToken%></li>
-            <li>12 MATIC</li>
+            <li class="adjusted"><%=adjustedPricePerToken%></li>
+            <li><%=adjustedPricePerToken-10000%> </li>
         </ul>
     </div>
     <div id="card_container2">
@@ -66,17 +66,17 @@
         </div>
         <div id="image_bg">
           <div id="card_text">
-          <div id="channel_title">Channel name</div>
+          <div id="channel_title"><%=creatorchannelname%></div>
           <div id="token_details">
               <div id="token_price">
                       <div style="display: grid;grid-template-rows: 30px 40px;">
                           <div class="token_detail_label">Price</div>
-                          <div class="token_detail_value"><p>12 MATIC</p></div>
+                          <div class="token_detail_value"><p><%=adjustedPricePerToken%> INR</p></div>
                       </div>
               <div id="token_volume">
                   <div style="display: grid;grid-template-rows: 30px 40px;">
                       <div class="token_detail_label">Volume</div>
-                      <div class="token_detail_value"><p>450/500</p></div>
+                      <div class="token_detail_value"><p><%=tokens%></p></div>
                   </div>
               </div>
               </div>
