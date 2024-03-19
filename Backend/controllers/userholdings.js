@@ -47,5 +47,9 @@ const buyStock = async(req,res)=>{
   }
 }
 
+const getUserBuy = (req,res)=>{
+  res.render('userbuy');
+}
 
-module.exports ={userDashboard,buyStock};
+
+module.exports ={userDashboard,buyStock, getUserBuy};
