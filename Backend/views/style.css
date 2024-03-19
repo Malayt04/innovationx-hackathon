@@ -274,13 +274,13 @@ a:-webkit-any-link {
     font-size: 18px;
 }
 #cre a {
-    color: inherit; /* Inherit color from parent text */
-    text-decoration: none; /* Remove underline from the link */
-    transition: color 0.3s ease; /* Add transition for color change */
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
 }
 
 #cre a:hover {
-    color: #FFD966; /* Change color on hover */
+    color: #FFD966; 
 }
 
 #getting{
