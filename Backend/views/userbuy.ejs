@@ -25,12 +25,15 @@
         </nav>
     </div>
       </div><p id="channel">Channel Name</p>
-      <input type="number" id="cname"><br>
-      <p id="email">Email</p>
-      <input type="email" id="emai">
-      <p id="quant">Quantity</p>
-      <input type="number" id="quantity">
-      <input type="submit" id="buy" value="Buy">
+      <form action="/userbuy" method="post">
+        <input type="text" id="creatorchannelname" name="creatorchannelname"><br>
+        <p id="email">Email</p>
+        <input type="email" id="useremail" name="useremail">
+        <p id="quant">Quantity</p>
+        <input type="number" id="quantity" name="quantity">
+        <input type="submit" id="buy" value="Buy">
+      </form>
+     
       <script>
         function ulgout(){
             document.getElementById("uname").innerHTML = "<button id='lgbtn'>Log Out</button>";

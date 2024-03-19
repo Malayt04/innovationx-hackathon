@@ -63,7 +63,7 @@ body {
     left: 560px;
     width: 400px;
 }
-#cname{
+#creatorchannelname{
     position: relative;
     top: 138px;
     left: 740px;
@@ -81,7 +81,7 @@ body {
     left: 600px;
     width: 100px;
 }
-#emai{
+#useremail{
     position: relative;
     top: 108px;
     left: 740px;
