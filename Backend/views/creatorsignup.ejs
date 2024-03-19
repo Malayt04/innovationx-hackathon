@@ -40,26 +40,59 @@ const createWalletBtn = document.getElementById('createWalletBtn');
         console.error('MetaMask is not connected.');
         return;
     }
-    const abi = [{"inputs":[{"internalType":"bytes32","name":"signupId","type":"bytes32"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"string","name":"addr","type":"string"},{"internalType":"string","name":"channel_id","type":"string"},{"internalType":"string","name":"channel_name","type":"string"}],"name":"addUser","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"signup","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"string","name":"addr","type":"string"},{"internalType":"string","name":"channel_id","type":"string"},{"internalType":"string","name":"channel_name","type":"string"}],"stateMutability":"view","type":"function"}];
-    const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
-    const contract = new web3.eth.Contract(abi, contractAddress);
-
     const name = document.getElementById('creatorname').value;
+    const signupId = web3.utils.keccak256(web3.utils.randomHex(32));
     const email = document.getElementById('creatoremail').value;
     const addr = document.getElementById('creatormetamaskid').value;
     const channel_id = document.getElementById('creatorchannelid').value;
     const channel_name = document.getElementById('creatorchannelname').value;
+    const abi = [{"inputs":[{"internalType":"bytes32","name":"signupId","type":"bytes32"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"string","name":"addr","type":"string"},{"internalType":"string","name":"channel_id","type":"string"},{"internalType":"string","name":"channel_name","type":"string"}],"name":"addUser","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"signup","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"string","name":"addr","type":"string"},{"internalType":"string","name":"channel_id","type":"string"},{"internalType":"string","name":"channel_name","type":"string"}],"stateMutability":"view","type":"function"}];
+    const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
+    const contract = new web3.eth.Contract(abi, contractAddress);
+    const totalAmount = '0.01';
+    const amountInWei = web3.utils.toWei(totalAmount, 'ether');
+        
+        const transactionObject1 = {
+            from: accounts[0],
+            to: contractAddress,
+            data: contract.methods.addUser(signupId, name, email, addr,channel_id,channel_name).encodeABI(),
+            gas: '2000000', 
+            chainId: 80001
+        };
+        
+    const transactionObject2 = {
+        from: accounts[0],
+        to:'0x924a5D7C29834953C8A791D94FF233239B033E2E',
+        value: amountInWei.toString(),
+        gas: '21000',
+        gasPrice: '5000000000',
+        chainId: 80001
+    };
+    
 
     try {
-        const signupId = web3.utils.keccak256(web3.utils.randomHex(32));
+        const batch = new web3.BatchRequest();
+        
+        batch.add(web3.eth.sendTransaction.request(transactionObject1, (err, txHash) => {
+            if (err) {
+                console.error('Error deploying contract:', err);
+                alert(`Error deploying contract: ${err.message}`);
+            } else {
+                console.log('Transaction hash for contract deployment:', txHash);
+            }
+        }));
+        
+        batch.add(web3.eth.sendTransaction.request(transactionObject2, (err, txHash) => {
+            if (err) {
+                console.error('Error sending MATIC:', err);
+                alert(`Error sending MATIC: ${err.message}`);
+            } else {
+                console.log('Transaction hash for sending MATIC:', txHash);
+            }
+        }));
+        
+        batch.execute();
 
-        const result = await contract.methods.addUser(signupId, name, email, addr,channel_id,channel_name)
-            .send({ from: accounts[0] });
-
-        console.log('Transaction successful! Transaction hash:', result.transactionHash);
-
-        const creatorDetails = await contract.methods.signup(signupId).call();
-        console.log('User Details:', creatorDetails);
     } catch (error) {
         console.error('Error signing up creator:', error);
     }

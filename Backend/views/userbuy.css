@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image:url(background-img.png) ;
+    background-image:url(background.png) ;
     background-repeat:no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%;
@@ -29,43 +29,6 @@ body {
     top: 155px;
     left: 530px;
 }
-#list{
-    width: 600px;
-}
-#list1{
-    list-style-type: none;
-    display: flex;
-    position: relative;
-    top: 110px;
-    left: 440px;
-    font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 23px;
-  justify-content: space-between;
-color: #E3D8A0;
-
-}
-#list2{
-    list-style-type: none;
-    display: flex;
-    font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 23px;
-  justify-content: space-between;
-  position: relative;
-  top:125px;
-  left:440px;
-  color: #E3D8A0;
-}
-#creator{
-    width: 280px;
-    height: 280px;
-    position: relative;
-    top: 180px;
-    left: 600px;
-}
 .navbar {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -84,14 +47,14 @@ color: #E3D8A0;
     background-color: #E3D8A0;
     border-radius: 20px;
     border-color: #2b051e;
-    width: 70%; 
+    width: 78%; 
     position: absolute;
     top: 20px;
     left: 190px;
     border-width: 2px;
     border-style: solid;
     height: 55px;
-    padding-left:90px ;
+    padding-left:30px ;
 }
 #search {
     position: relative;
@@ -106,7 +69,6 @@ color: #E3D8A0;
     color: black; 
 
 }
-
 #imgnew{
     display: flex;
     justify-content: space-between;
@@ -126,8 +88,8 @@ color: #E3D8A0;
     height: 200px;
 }
 #search::placeholder {
-    color: gray; 
-    font-style: italic; 
+    color: gray; /* Change the placeholder text color */
+    font-style: italic; /* Change the placeholder text style */
 }
 #newcreators{
     font-family: "Poppins", sans-serif;
@@ -250,12 +212,12 @@ color: #E3D8A0;
 }
 
 .inputplace {
-    display: inline-block; 
-    margin-right: 10px; 
+    display: inline-block; /* Display input fields inline */
+    margin-right: 10px; /* Add some margin between input fields */
 }
 
 label {
-    display: inline-block; 
+    display: inline-block;
     width: 120px; 
     text-align: right;
     margin-right: 10px; 

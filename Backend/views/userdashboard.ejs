@@ -15,6 +15,22 @@
         function unm(){
             document.getElementById("").innerHTML = "<%=username%>";
         }
+        
+    </script>
+    <script>
+        function showDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+
+        function logout() {
+            // Redirect to home page
+            window.location.href = "/";
+        }
     </script>
 </head>
 
@@ -23,9 +39,12 @@
         <nav class="navbar">
             <div class="navdiv">
                 <ul>
-                    <li><a href=""><span class="join"><%= username %></span></a></li>
+                    <li><a href="#" onclick="showDropdown()"><span class="join"><%= username %></span></a>
+                        <div id="dropdown" style="display: none;">
+                            <a href="#" onclick="logout()" id="log">Log Out</a>
+                        </div></li>
                     <li><span id="mint">metamint</span></li>
-                    <li><a href="/"><span class="join">Stock View</span></a></li>
+                    <li><a href="/"><span class="join">TokenView</span></a></li>
                     <li><a href="/"><span class="join">History</span></a></li>
                 </ul>
             </div>
@@ -36,11 +55,11 @@
    <div >
     <p id="topcreators">Top Creators</p>
     <div id="imgtop">
-        <img class="topimg" src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="topimg" src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="topimg" src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="topimg" src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="topimg" src="Token card.png">
+        <a href="/userbuy"><img class="topimg" src="Token card.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img  src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img  src="Token card.png">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img  src="Token card.png">
     </div>
    </div>
    <div >
@@ -53,10 +72,6 @@
         <img class="topimg" src="Token card.png">
     </div>
    </div>
-
-   <% for(let creator of sortedCreators) { %>
-    <p><%= creator.creatorname %></p>
-<% } %>
 </body>
 
 </html>

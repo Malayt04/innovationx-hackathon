@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image:url(plane.png) ;
+    background-image:url(home.png) ;
     background-repeat:no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%;
@@ -20,7 +20,7 @@ a:-webkit-any-link {
     border-radius: 5px;
     cursor: pointer;
     width: 200px;
-    margin-top: 20px;
+    margin-top: 100px;
     margin-left: 80%;
     color: #2b051e;
     font-family: "Poppins", sans-serif;
@@ -35,9 +35,10 @@ a:-webkit-any-link {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 80%;
+    width: 100px;
+    position: relative;
+    left: 1350px;
+    top: -60px;
     color: #2b051e;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
@@ -49,6 +50,7 @@ a:-webkit-any-link {
     font-weight: bold;
     text-align: center;
     animation: fadein 2s ease-in-out; /* Apply animation */
+    color:#E3D8A0
   }
   
   #metamint {
@@ -67,7 +69,7 @@ a:-webkit-any-link {
   font-style: normal;
   font-size: 90px;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 #about_us{
     font-family: "Poppins", sans-serif;
@@ -77,8 +79,80 @@ a:-webkit-any-link {
     margin-left: 200px;
     margin-top: 20%;
     margin-bottom: 0;
+    color: #E3D8A0;
+}
+.join{
+    font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+}
+#mint{
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
+.navbar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #E3D8A0;
+    border-radius: 20px;
+    border-color: #2b051e;
+    width: 50%;
+    position: absolute;
+    top: 20px;
+    left: 280px;
+    border-width: 2px;
+    border-style: solid;
+    height: 55px;
+    padding-left:230px ;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin-right: 280px; /* Adjust as needed */
+}
+
+.navbar ul li a {
+    color: black;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 399;
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar ul li a:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(227, 127, 6);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: rgb(108, 102, 102);
+}
+
+.navbar ul li a:hover:after {
+    width: 100%;
+}
 #aboutus{
     width: 100%; 
     margin: 0 auto;
@@ -108,9 +182,11 @@ a:-webkit-any-link {
     font-weight: 600;
     font-style: normal;
     font-size: 40px;
-    margin-left: 1000px;
+    margin-left: 600px;
     margin-top: 0%;
     margin-bottom: 0;
+
+    color: #E3D8A0;
 }
 #contactus{
     width: 80%; 
@@ -120,10 +196,36 @@ a:-webkit-any-link {
     background-position: center;
     background-repeat: no-repeat;
     height: 300px;
-    margin-left: 500px;
+    margin-left: 100px;
     margin-top: 0;
 
 }
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contactForm label {
+    width: 100px; /* Adjust the width according to your preference */
+}
+
+#message{
+    position: relative;
+    top: -60px;
+}
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+    width: 300px; /* Adjust the width according to your preference */
+    margin-bottom: 10px;
+}
+
+#contactForm input[type="submit"] {
+    width: 150px; /* Adjust the width according to your preference */
+    align-self: center;
+}
+
 #contactus_form{
     margin-left: 400px;
     padding-top: 26px;
@@ -146,22 +248,68 @@ a:-webkit-any-link {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 100px;
+    width: 100px;
+    position: relative;
+    top: 40px;
+    left: -290px;
     color: #2b051e;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
     font-size: 16px;
 }
+#started{
+    position: relative;
+    top: 480px;
+    color:#E3D8A0 ;
+   width: 200px;
+   left: 630px;
 
+}
+#cre{
+    color: #E3D8A0;
+    text-decoration: none;
+    position: relative;
+    left: 10px;
+    font-size: 18px;
+}
+#cre a {
+    color: inherit; /* Inherit color from parent text */
+    text-decoration: none; /* Remove underline from the link */
+    transition: color 0.3s ease; /* Add transition for color change */
+}
+
+#cre a:hover {
+    color: #FFD966; /* Change color on hover */
+}
+
+#getting{
+padding: 8px 20px;
+    background-color: #dd8c0a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    color: #2b051e;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+}
+#getting:hover {
+    background-color: #cd8e21;
+}
+#user_signup:hover {
+    background-color: #cd8e21;
+}
 #footer_text{
     text-align: center;
     text-align: center;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
-    margin-bottom: 0;
+    font-size: 16px;
+    margin-top:40px;
+    margin-left: -20px;
+    color: #E3D8A0;
 }

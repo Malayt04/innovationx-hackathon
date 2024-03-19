@@ -16,6 +16,21 @@
             document.getElementById("").innerHTML = "<%=username%>";
         }
     </script>
+    <script>
+        function showDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+
+        function logout() {
+            // Redirect to home page
+            window.location.href = "/";
+        }
+    </script>
 </head>
 
 <body id="body">
@@ -23,7 +38,10 @@
         <nav class="navbar">
             <div class="navdiv">
                 <ul>
-                    <li><a href=""><span class="join">Username</span></a></li>
+                    <li><a href="#" onclick="showDropdown()"><span class="join"><%= username %></span></a>
+                        <div id="dropdown" style="display: none;">
+                            <a href="#" onclick="logout()" id="log">Log Out</a>
+                        </div></li>
                     <li><span id="mint">metamint</span></li>
                     <li><a href="/"><span class="join">Open CAO</span></a></li>
                 </ul>
