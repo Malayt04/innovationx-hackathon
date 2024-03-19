@@ -36,41 +36,29 @@ const createToken = (id) => {
 };
 
 async function fetchChannelDataForLastNDays(channelId) {
-    try {
-        const today = new Date();
-        const todayFormatted = formatDate(today);
-        const todayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y&date=${todayFormatted}`);
-        console.log('todayResponse:', todayResponse); // Debug line
+  try {
+    const today = new Date();
 
-        const todayViews = todayResponse.data.items[0].statistics.viewCount;
-        console.log('todayViews:', todayViews); // Debug line
+    const todayResponse = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyCYP2If6bSVadtxtBVOYcS_X7R4-8Vfp5Y`);
 
-        const yesterdayViews =29255964500;
-        const dayBeforeYesterdayViews =29255964000;
+    const todayViews = todayResponse.data.items[0].statistics.viewCount; 
 
-        const mean = (todayViews+yesterdayViews+dayBeforeYesterdayViews)/3;
-        console.log('mean:', mean); // Debug line
+    // Calculate yesterdayViews and dayBeforeYesterdayViews based on your logic (replace with your implementation)
+    const yesterdayViews = 29255964500;
+    const dayBeforeYesterdayViews = 29255964000;
 
-        const squaredDifferenceSum = Math.pow(dayBeforeYesterdayViews-mean,2)+Math.pow(yesterdayViews-mean,2)+Math.pow(todayViews-mean,2);
-        console.log('squaredDifferenceSum:', squaredDifferenceSum); // Debug line
+    const c1 = yesterdayViews-dayBeforeYesterdayViews;
+    const c2 = todayViews-yesterdayViews;
 
-        const standardDeviation= Math.sqrt(squaredDifferenceSum/3);
-        console.log('standardDeviation:', standardDeviation); // Debug line
+    const percentageChange=((c2-c1)/c1)* 100;
+        console.log("todaya",todayViews);
+        console.log("yesterday",yesterdayViews);
 
-        const tokenPrices = [];
-
-        for (let price = mean - 3 * standardDeviation; price <= mean + 3 * standardDeviation; price++) {
-            const probability = calculateProbability(price, mean, standardDeviation);
-            tokenPrices.push({ price, probability });
-        }
-
-        console.log('tokenPrices:', tokenPrices); // Debug line
-
-        return tokenPrices;
-    } catch (err) {
-        console.error('Error:', err); // Debug line
-        throw new Error('Failed to fetch YouTube channel data');
-    }
+        return percentageChange;
+  } catch (err) {
+    console.error('Error:', err);
+    throw new Error('Failed to fetch YouTube channel data');
+  }
 }
 
 module.exports.creatorsignupget = (req, res) => {
@@ -90,8 +78,8 @@ module.exports.creatorsignuppost = async (req, res) => {
     try {
         // Fetch views and subscribers count from the YouTube API
         const subscriberCount  = await fetchChannelData(creatorchannelid);
-        const tokenPrices = await fetchChannelDataForLastNDays(creatorchannelid);
-        console.log("mean:", mean);
+        const percentageChange = await fetchChannelDataForLastNDays(creatorchannelid);
+        console.log("percentageChange:", percentageChange);
 
         
 
@@ -99,26 +87,18 @@ module.exports.creatorsignuppost = async (req, res) => {
         
         
         let adjustedPricePerToken=pricepertoken;
-
-        
-
-    // Calculate total probability (area under the curve)
-    const totalProbability = tokenPrices.reduce((acc, { probability }) => acc + probability, 0);
-
-    // Choose a random value based on probability distribution
-    let randomNumber = Math.random() * totalProbability;
-    for (const { price, probability } of tokenPrices) {
-        if (randomNumber < probability) {
-            adjustedPricePerToken = price;
-            break;
+        if (percentageChange > 0) {
+            adjustedPricePerToken *= (1 + percentageChange / 100);
+        } else if (percentageChange < 0) {
+            adjustedPricePerToken *= (1 - Math.abs(percentageChange) / 100);
         }
-        randomNumber -= probability;
-    }
+        
+        const percentagedeflection =(( adjustedPricePerToken - pricepertoken)/pricepertoken) * 100;
+        console.log("percentagedeflection:", percentagedeflection)
         
         
         
-        
-        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection:totalProbability, subscribers:subscriberCount });
+        const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection, subscribers:subscriberCount });
         
         
         const token = createToken(creator._id);
@@ -131,6 +111,10 @@ module.exports.creatorsignuppost = async (req, res) => {
         res.status(400).json({ errors });
     }
 };
+
+function calculateProbability(x, mean, standardDeviation) {
+    return (1 / (standardDeviation * Math.sqrt(2 * Math.PI))) * Math.exp(-Math.pow(x - mean, 2) / (2 * Math.pow(standardDeviation, 2)));
+}
 
 
 
