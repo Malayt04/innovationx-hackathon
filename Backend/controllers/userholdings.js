@@ -31,6 +31,8 @@ const buyStock = async(req,res)=>{
       user.myholdings.push(creator);
       await user.save();
 
+      
+
       res.status(200).json(user);
      
     }
