@@ -2,17 +2,6 @@ const Creator = require('../models/Creator');
 const User=require('../models/User');
 
 
-const dashboard = async (req, res) => {
-    try {
-        const sortedCreatorList = await Creator.find().sort({subscribers: -1}).limit(5);
-        res.render('userdashboard', {username: res.locals.username, sortedCreators: sortedCreatorList});
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({message: "Server Error"});
-    }
-}
-
-
 const userDashboard = async(req,res)=>{
     const id = req.params.id;
 
@@ -54,4 +43,4 @@ const buyStock = async(req,res)=>{
 }
 
 
-module.exports ={userDashboard,buyStock,dashboard};
+module.exports ={userDashboard,buyStock};
