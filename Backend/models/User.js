@@ -33,15 +33,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
     },
-    investedvalue: {
-        type: Number,
-    },
-    currentvalue: {
-        type: Number,
-    },
-    totalreturns: {
-        type: Number,
-    },
+    mytoken: {
+        type: Number,  
+        default:0, 
+     },
     myholdings:[{
         type: mongoose.Schema.ObjectId,
         ref: "Creator"

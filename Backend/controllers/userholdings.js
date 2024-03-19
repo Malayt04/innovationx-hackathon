@@ -21,24 +21,27 @@ const userDashboard = async(req,res)=>{
 }
 
 const buyStock = async(req,res)=>{
-    const { id,creator } = req.params;
+    const { useremail, creatorchannelname, quantity } = req.body;
   
 
   try {
-    const user = await User.findById(id);
+    const user = await User.findOne({useremail});
+    const creator = await Creator.findOne({creatorchannelname});
 
-    if (user) {
-      user.myholdings.push(creator);
+      user.myholdings.push(creator._id);
+      user.mytoken += quantity;
       await user.save();
 
-      
+      creator.tokens -= quantity;
+      await creator.save();
+
+
+
 
       res.status(200).json(user);
      
-    }
-    else{
-      return res.status(400).json({ error: 'Organisation not found' });
-    }
+
+   
   } catch (error) {
     res.status(400).json({error:error.message});
   }
