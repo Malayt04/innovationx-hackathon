@@ -44,8 +44,8 @@ async function fetchChannelDataForLastNDays(channelId) {
     const todayViews = todayResponse.data.items[0].statistics.viewCount; 
 
     // Calculate yesterdayViews and dayBeforeYesterdayViews based on your logic (replace with your implementation)
-    const yesterdayViews = 29255964500;
-    const dayBeforeYesterdayViews = 29255964000;
+    const yesterdayViews = 29256496000;
+    const dayBeforeYesterdayViews = 29256494765;
 
     const c1 = yesterdayViews-dayBeforeYesterdayViews;
     const c2 = todayViews-yesterdayViews;
@@ -99,39 +99,24 @@ module.exports.creatorsignuppost = async (req, res) => {
         
         
         const creator = await Creator.create({ creatorname, creatoremail,creatorchannelid, creatorchannelname, creatormetamaskid, creatorpassword, tokens,adjustedPricePerToken,percentagedeflection, subscribers:subscriberCount });
+
+        const newCreator = {
+            creatorname: creator.creatorname,
+            adujustedPricePerToken:creator.adjustedPricePerToken,
+            tokens:creator.tokens,
+            percentagedeflection:creator.percentagedeflection
+        };
         
         
-        const token = createToken(creator._id);
-        
-        // Set cookie and respond with creator ID
-        res.cookie('jwt', token, { httpOnly:true, maxAge: maxAge * 1000 });
-        res.status(201).json(creator);
+        res.status(201).render('creatordashboard', { creatorname: newCreator.creatorname, adjustedPricePerToken:newCreator.adjustedPricePerToken,  tokens:newCreator.tokens, percentagedeflection:newCreator.percentagedeflection});
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
 };
 
-function calculateProbability(x, mean, standardDeviation) {
-    return (1 / (standardDeviation * Math.sqrt(2 * Math.PI))) * Math.exp(-Math.pow(x - mean, 2) / (2 * Math.pow(standardDeviation, 2)));
-}
 
 
-
-function formatDate(date) {
-    const year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-
-    if (month < 10) {
-        month = '0' + month;
-    }
-    if (day < 10) {
-        day = '0' + day;
-    }
-
-    return `${year}-${month}-${day}`;
-}
 
 
 function calculateTokenAllocation(subscribers) {
