@@ -43,7 +43,7 @@
                             <a href="#" onclick="logout()" id="log">Log Out</a>
                         </div></li>
                     <li><span id="mint">metamint</span></li>
-                    <li><a href="/"><span class="join">Open CAO</span></a></li>
+                    <li><a href=""><span class="join">Open CAO</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -56,14 +56,18 @@
         </ul>
         <ul id="list2">
             <li>10000</li>
-            <li class="adjusted"><%=adjustedPricePerToken%></li>
-            <li><%=adjustedPricePerToken-10000%> </li>
+            <li class="adjusted">
+                <%= Number(adjustedPricePerToken).toFixed(2) %> INR
+            </li>
+            <li>
+                <%= Number(adjustedPricePerToken-10000).toFixed(2) %> INR</li>
         </ul>
     </div>
     <div id="card_container2">
         <div id="image_holder">
           <div id="image">
-            <div id="change"><%=percentagedeflection%>%</div>
+            <div id="change">
+                <p><%= Number(percentagedeflection).toFixed(2) %> %</p></div>
           </div>
         </div>
         <div id="image_bg">
@@ -72,8 +76,11 @@
           <div id="token_details">
               <div id="token_price">
                       <div style="display: grid;grid-template-rows: 30px 40px;">
-                          <div class="token_detail_label">Price</div>
-                          <div class="token_detail_value"><p><%=adjustedPricePerToken%> INR</p></div>
+                        <div class="token_detail_label">Price</div>
+                          <div class="token_detail_value">
+                            <p><%= Number(adjustedPricePerToken).toFixed(2) %> INR</p>
+                        </div>
+                        
                       </div>
               <div id="token_volume">
                   <div style="display: grid;grid-template-rows: 30px 40px;">

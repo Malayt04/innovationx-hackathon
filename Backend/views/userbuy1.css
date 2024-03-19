@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image:url(background-img.png) ;
+    background-image:url(home.png) ;
     background-repeat:no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%;
@@ -29,35 +29,8 @@ body {
     top: 155px;
     left: 530px;
 }
-#list{
-    width: 600px;
-}
-#list1{
-    list-style-type: none;
-    display: flex;
-    position: relative;
-    top: 110px;
-    left: 440px;
-    font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 23px;
-  justify-content: space-between;
-color: #E3D8A0;
-
-}
-#list2{
-    list-style-type: none;
-    display: flex;
-    font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 23px;
-  justify-content: space-between;
-  position: relative;
-  top:125px;
-  left:440px;
-  color: #E3D8A0;
+.navbar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #card_container2{
     margin-top: 90px;
@@ -70,26 +43,83 @@ color: #E3D8A0;
     background-color: #E3D8A0;
     position: absolute;
     padding-bottom: 15px;
+    margin: 15px;
     margin-top: 140px;
     margin-left: 600px;
 }
-#change{
-    margin-left: 220px;
-    color: #2B051E;
-    font-family: Poppins;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-}
-#log{
-    font-size: 20px;
+#quant{
+    color: #E3D8A0;
+    font-size: 22px;
     position: relative;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 17px;
-
+    top: 135px;
+    left: 600px;
+    width: 100px;
 }
+#channel{
+    color: #E3D8A0;
+    font-size: 22px;
+    position: relative;
+    top: 190px;
+    left: 560px;
+    width: 400px;
+}
+#cname{
+    position: relative;
+    top: 138px;
+    left: 740px;
+    width: 180px;
+    height: 30px;
+    background-color:transparent;
+    border: 2px solid #E3D8A0;
+    color: #E3D8A0;
+}
+#email{
+    color: #E3D8A0;
+    font-size: 22px;
+    position: relative;
+    top: 160px;
+    left: 600px;
+    width: 100px;
+}
+#emai{
+    position: relative;
+    top: 108px;
+    left: 740px;
+    width: 180px;
+    height: 30px;
+    background-color:transparent;
+    border: 2px solid #E3D8A0;
+    color: #E3D8A0;
+}
+#quantity{
+    position: relative;
+    top: 80px;
+    left: 740px;
+    width: 180px;
+    height: 30px;
+    background-color:transparent;
+    border: 2px solid #E3D8A0;
+    color: #E3D8A0;
+}
+#buy{
+    padding: 8px 20px;
+    background-color: #dd8c0a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  position: relative;
+  top:150px;
+  left: 550px;
+}
+#buy:hover {
+    background-color: #e59a29;
+}
+
 #image_holder{
     display: flex;
     justify-content: center;
@@ -147,16 +177,6 @@ p{
     padding: 0;
     margin: 0;
 }
-#creator{
-    width: 280px;
-    height: 280px;
-    position: relative;
-    top: 180px;
-    left: 600px;
-}
-.navbar {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 #topcreators{
     font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -172,14 +192,14 @@ p{
     background-color: #E3D8A0;
     border-radius: 20px;
     border-color: #2b051e;
-    width: 70%; 
+    width: 80%; 
     position: absolute;
     top: 20px;
-    left: 190px;
+    left: 152px;
     border-width: 2px;
     border-style: solid;
     height: 55px;
-    padding-left:90px ;
+    padding-left:30px ;
 }
 #search {
     position: relative;
@@ -194,7 +214,6 @@ p{
     color: black; 
 
 }
-
 #imgnew{
     display: flex;
     justify-content: space-between;
@@ -214,8 +233,8 @@ p{
     height: 200px;
 }
 #search::placeholder {
-    color: gray; 
-    font-style: italic; 
+    color: gray; /* Change the placeholder text color */
+    font-style: italic; /* Change the placeholder text style */
 }
 #newcreators{
     font-family: "Poppins", sans-serif;
@@ -338,12 +357,12 @@ p{
 }
 
 .inputplace {
-    display: inline-block; 
-    margin-right: 10px; 
+    display: inline-block; /* Display input fields inline */
+    margin-right: 10px; /* Add some margin between input fields */
 }
 
 label {
-    display: inline-block; 
+    display: inline-block;
     width: 120px; 
     text-align: right;
     margin-right: 10px; 

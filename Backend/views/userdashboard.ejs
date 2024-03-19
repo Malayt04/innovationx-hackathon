@@ -44,8 +44,8 @@
                             <a href="#" onclick="logout()" id="log">Log Out</a>
                         </div></li>
                     <li><span id="mint">metamint</span></li>
-                    <li><a href="/"><span class="join">TokenView</span></a></li>
-                    <li><a href="/"><span class="join">History</span></a></li>
+                    <li><a href=""><span class="join">TokenView</span></a></li>
+                    <li><a href=""><span class="join">History</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -59,7 +59,7 @@
         <a href="/userbuy"><div id="card_container">
             <div id="image_holder">
               <div id="image">
-                <div id="change"><%=creator.percentagedeflection%>%</div>
+                <div id="change"><%=Number(creator.percentagedeflection).toFixed(2)%>%</div>
               </div>
             </div>
             <div id="image_bg">
@@ -69,7 +69,7 @@
                   <div id="token_price">
                           <div style="display: grid;grid-template-rows: 30px 40px;">
                               <div class="token_detail_label">Price</div>
-                              <div class="token_detail_value"><p><%=creator.adjustedPricePerToken%></p></div>
+                              <div class="token_detail_value"><p><%=Number(creator.adjustedPricePerToken).toFixed(2)%></p></div>
                           </div>
                   <div id="token_volume">
                       <div style="display: grid;grid-template-rows: 30px 40px;">
@@ -93,7 +93,7 @@
         <div id="card_container2">
             <div id="image_holder">
               <div id="image">
-                <div id="change"><%=creator.percentagedeflection%>%</div>
+                <div id="change"><%=Number(creator.percentagedeflection).toFixed(2)%>%</div>
               </div>
             </div>
             <div id="image_bg">
@@ -103,7 +103,7 @@
                   <div id="token_price">
                           <div style="display: grid;grid-template-rows: 30px 40px;">
                               <div class="token_detail_label">Price</div>
-                              <div class="token_detail_value"><p><%=creator.adjustedPricePerToken%></p></div>
+                              <div class="token_detail_value"><p><%=Number(creator.adjustedPricePerToken)%></p></div>
                           </div>
                   <div id="token_volume">
                       <div style="display: grid;grid-template-rows: 30px 40px;">
