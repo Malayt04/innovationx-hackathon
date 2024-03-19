@@ -74,9 +74,14 @@ module.exports.userloginpost = async (req, res) => {
         if (!user) {
             throw Error('User not found'); // Handle the case where user is null
         }
-        const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({ user: user._id });
+        const newUser = {
+            username: user.username,
+            
+        };
+
+        const sortedCreatorList = await Creator.find().sort({ percentagedeflection: -1 }).limit(5);
+        const newCreators = await Creator.find().limit(5);
+        res.status(201).render('userdashboard', { username: newUser.username, creators: sortedCreatorList, naye: newCreators });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });

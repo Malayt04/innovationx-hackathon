@@ -38,7 +38,7 @@ const buyStock = async(req,res)=>{
 
 
 
-      res.status(200).json(user);
+      res.status(200).redirect('/userlogin');
      
 
    
