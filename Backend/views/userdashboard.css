@@ -177,6 +177,14 @@ p{
     width: 300px;
     height: 200px;
 }
+#change{
+    margin-left: 200px;
+    color: #2B051E;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+}
 #log{
     font-size: 20px;
     position: relative;
