@@ -50,14 +50,14 @@ module.exports.usersignuppost = async (req, res) => {
         const user = await User.create({ username, useremail, usernumber, userage, usermetamaskid, userpassword });
         const newUser = {
             username: user.username,
-            
+            mytoken: user.mytoken
         };
 
         const sortedCreatorList = await Creator.find().sort({ percentagedeflection: -1 }).limit(5);
         const newCreators = await Creator.find().limit(5);
 
 
-        res.status(201).render('userdashboard', { username: newUser.username, creators: sortedCreatorList, naye: newCreators });
+        res.status(201).render('userdashboard', { username: newUser.username,mytoken:newUser.mytoken, creators: sortedCreatorList, naye: newCreators });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
@@ -76,12 +76,12 @@ module.exports.userloginpost = async (req, res) => {
         }
         const newUser = {
             username: user.username,
-            
+            mytoken: user.mytoken
         };
 
         const sortedCreatorList = await Creator.find().sort({ percentagedeflection: -1 }).limit(5);
         const newCreators = await Creator.find().limit(5);
-        res.status(201).render('userdashboard', { username: newUser.username, creators: sortedCreatorList, naye: newCreators });
+        res.status(201).render('userdashboard', { username: newUser.username,mytoken:newUser.mytoken, creators: sortedCreatorList, naye: newCreators });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });

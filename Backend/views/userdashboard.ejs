@@ -104,12 +104,12 @@
                   <div id="token_price">
                           <div style="display: grid;grid-template-rows: 30px 40px;">
                               <div class="token_detail_label">Price</div>
-                              <div class="token_detail_value"><p><%=Number(creator.adjustedPricePerToken)%></p></div>
+                              <div class="token_detail_value"><p><%=Number(creator.adjustedPricePerToken).toFixed(2)></p></div>
                           </div>
                   <div id="token_volume">
                       <div style="display: grid;grid-template-rows: 30px 40px;">
                           <div class="token_detail_label">Volume</div>
-                          <div class="token_detail_value"><p><%=creator.tokens%></p></div>
+                          <div class="token_detail_value"><p><%=mytoken%></p></div>
                       </div>
                   </div>
                   </div>
@@ -120,6 +120,40 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <%}%>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div >
+        <p id="newcreators">My Holdings</p>
+        <% for (let creator of naye) {%> 
+        <div id="imgnew">
+            <div id="card_container2">
+                <div id="image_holder">
+                  <div id="image">
+                    <div id="change"><%=Number(creator.percentagedeflection).toFixed(2)%>%</div>
+                  </div>
+                </div>
+                <div id="image_bg">
+                  <div id="card_text">
+                  <div id="channel_title"><%=creator.creatorname%></div>
+                  <div id="token_details">
+                      <div id="token_price">
+                              <div style="display: grid;grid-template-rows: 30px 40px;">
+                                  <div class="token_detail_label">Price</div>
+                                  <div class="token_detail_value"><p><%=Number(creator.adjustedPricePerToken).toFixed(2)></p></div>
+                              </div>
+                      <div id="token_volume">
+                          <div style="display: grid;grid-template-rows: 30px 40px;">
+                              <div class="token_detail_label">Token</div>
+                              <div class="token_detail_value"><p><%=mytoken%></p></div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+                  </div>
+              </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <%}%>
    </div>
 </body>
 
