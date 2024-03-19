@@ -38,7 +38,7 @@
         <nav class="navbar">
             <div class="navdiv">
                 <ul>
-                    <li><a href="#" onclick="showDropdown()"><span class="join"><%= username %></span></a>
+                    <li><a href="#" onclick="showDropdown()"><span class="join"><%=creatorname%></span></a>
                         <div id="dropdown" style="display: none;">
                             <a href="#" onclick="logout()" id="log">Log Out</a>
                         </div></li>
@@ -55,12 +55,17 @@
             <li>Total Returns</li>
         </ul>
         <ul id="list2">
-            <li>33 MATIC</li>
-            <li>45 MATIC</li>
+            <li>10000</li>
+            <li><%=adjustedPricePerToken%></li>
             <li>12 MATIC</li>
         </ul>
     </div>
    <img id="creator" src="Token card (2).png">
+
+   <p></p>
+   <p></p>
+   <p><%=percentagedeflection%></p>
+   <p><%=tokens%></p>
 </body>
 
 </html>
