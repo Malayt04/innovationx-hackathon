@@ -105,7 +105,7 @@ module.exports.creatorsignuppost = async (req, res) => {
             adjustedPricePerToken:creator.adjustedPricePerToken,
             tokens:creator.tokens,
             percentagedeflection:creator.percentagedeflection,
-            createrchannelname:creator.creatorchannelname
+            creatorchannelname:creator.creatorchannelname
         };
         
         
