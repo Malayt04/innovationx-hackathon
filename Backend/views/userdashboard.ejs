@@ -54,9 +54,23 @@
     </div>
    </div>
 
-   <% for(let creator of sortedCreators) { %>
+   <% for(let creator of creators) { %>
     <p><%= creator.creatorname %></p>
+    <p><%= creator.adjustedPricePerToken %></p>
+    <p><%= creator.percentagedeflection %></p>
+    <p><%= creator.tokens %></p>
 <% } %>
+
+<p>New creators</p>
+
+
+<% for(let creator of naye) { %>
+    <p><%= creator.creatorname %></p>
+    <p><%= creator.adjustedPricePerToken %></p>
+    <p><%= creator.percentagedeflection %></p>
+    <p><%= creator.tokens %></p>
+<% } %>
+
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Creator = require('../models/Creator');
 const jwt = require('jsonwebtoken');
 
 const handleErrors = (err) => {
@@ -47,14 +48,26 @@ module.exports.usersignuppost = async (req, res) => {
     const { username, useremail, usernumber, userage, usermetamaskid, userpassword } = req.body;
     try {
         const user = await User.create({ username, useremail, usernumber, userage, usermetamaskid, userpassword });
-        const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).redirect('/userdashboard');
+        // Retrieve the newly signed-up creator's information
+        const newUser = {
+            username: user.username,
+            // Add other relevant creator information here if needed
+        };
+
+        // Retrieve the sorted list of creators
+        const sortedCreatorList = await Creator.find().sort({ percentagedeflection: -1 }).limit(5);
+        const newCreators = await Creator.find().limit(5);
+
+
+        // Render the user's dashboard with the signed-up creator's information and the sorted list of creators
+        res.status(201).render('userdashboard', { username: newUser.username, creators: sortedCreatorList, naye: newCreators });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
 };
+
+
 
 module.exports.userloginpost = async (req, res) => {
     const { useremail, userpassword } = req.body;
